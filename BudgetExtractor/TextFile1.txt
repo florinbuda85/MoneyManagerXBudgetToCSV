@@ -1,0 +1,10 @@
+﻿https://www.learnentityframeworkcore.com/walkthroughs/existing-database
+
+
+
+dotnet ef dbcontext scaffold  "DataSource=C:\work\pers\Sync\MoneyManager\new.mmb" Microsoft.EntityFrameworkCore.Sqlite --output-dir Models 
+--table CATEGORY_V1 
+--table CHECKINGACCOUNT_V1 
+--table BUDGETYEAR_V1 
+--table BUDGETTABLE_V1 
+-f
