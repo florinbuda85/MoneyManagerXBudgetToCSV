@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+    <style>
+        body {
+            padding: 15px;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <script>
+		$(function() {
+			//$(".det_1").hide();
+			//hide_all
+		});
+		function doShow (cls) {
+			if ($(cls).is(":visible"))
+				$(cls).hide();
+			else
+				$(cls).show();
+		}
+    </script>
+</head>
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-success">
+                <td>Categorie</td>
+                <td>Suma totala</td>
+                <td>Planificat</td>
+                <td>Ramasi</td>
+            </tr>
+        </thead>
+
+        <!-- rows -->
+
+    </table>
+
+    <hr />
+
+    <table class="table table-bordered">
+        <tr>
+            <td>Total castiguri</td>
+            <td><!-- IN --></td>
+        </tr>
+        <tr>
+            <td>Total cheltuieli</td>
+            <td><!-- OUT --></td>
+        </tr>
+    </table>
+</body>
+</html>

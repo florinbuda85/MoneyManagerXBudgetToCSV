@@ -7,4 +7,5 @@ dotnet ef dbcontext scaffold  "DataSource=C:\work\pers\Sync\MoneyManager\new.mmb
 --table CHECKINGACCOUNT_V1 
 --table BUDGETYEAR_V1 
 --table BUDGETTABLE_V1 
+--table ACCOUNTLIST_V1
 -f

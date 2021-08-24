@@ -12,7 +12,7 @@ namespace BudgetExtractor.Models
         public long? Toaccountid { get; set; }
         public long Payeeid { get; set; }
         public string Transcode { get; set; }
-        public double Transamount { get; set; }
+        public long Transamount { get; set; }
         public string Status { get; set; }
         public string Transactionnumber { get; set; }
         public string Notes { get; set; }

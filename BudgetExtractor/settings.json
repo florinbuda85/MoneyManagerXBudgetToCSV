@@ -1,4 +1,5 @@
 {
   "DatabasePath": "C:\\work\\pers\\Sync\\MoneyManager\\new.mmb",
-  "ExportFolder": "C:\\work\\pers\\Sync\\BugetCompletat\\new"
+  "ExportFolder": "C:\\work\\pers\\Sync\\MoneyManager",
+  "IgnoreCategories": "Transferuri,Venituri"
 }

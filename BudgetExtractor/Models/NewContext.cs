@@ -8,12 +8,11 @@ namespace BudgetExtractor.Models
 {
     public partial class NewContext : DbContext
     {
+        private readonly string databasePath;
 
-        public string path;
-
-        public NewContext(string path)
+        public NewContext(string databasePath)
         {
-            this.path = path;
+            this.databasePath = databasePath;
         }
 
         public NewContext(DbContextOptions<NewContext> options)
@@ -21,6 +20,7 @@ namespace BudgetExtractor.Models
         {
         }
 
+        public virtual DbSet<AccountlistV1> AccountlistV1s { get; set; }
         public virtual DbSet<BudgettableV1> BudgettableV1s { get; set; }
         public virtual DbSet<BudgetyearV1> BudgetyearV1s { get; set; }
         public virtual DbSet<CategoryV1> CategoryV1s { get; set; }
@@ -30,12 +30,91 @@ namespace BudgetExtractor.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite($"DataSource={path}");
+                optionsBuilder.UseSqlite($"DataSource={databasePath}");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AccountlistV1>(entity =>
+            {
+                entity.HasKey(e => e.Accountid);
+
+                entity.ToTable("ACCOUNTLIST_V1");
+
+                entity.HasIndex(e => e.Accountname, "IX_ACCOUNTLIST_V1_ACCOUNTNAME")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Accounttype, "IDX_ACCOUNTLIST_ACCOUNTTYPE");
+
+                entity.Property(e => e.Accountid)
+                    .HasColumnType("integer")
+                    .ValueGeneratedNever()
+                    .HasColumnName("ACCOUNTID");
+
+                entity.Property(e => e.Accessinfo).HasColumnName("ACCESSINFO");
+
+                entity.Property(e => e.Accountname)
+                    .IsRequired()
+                    .HasColumnName("ACCOUNTNAME");
+
+                entity.Property(e => e.Accountnum).HasColumnName("ACCOUNTNUM");
+
+                entity.Property(e => e.Accounttype)
+                    .IsRequired()
+                    .HasColumnName("ACCOUNTTYPE");
+
+                entity.Property(e => e.Contactinfo).HasColumnName("CONTACTINFO");
+
+                entity.Property(e => e.Creditlimit)
+                    .HasColumnType("numeric")
+                    .HasColumnName("CREDITLIMIT");
+
+                entity.Property(e => e.Currencyid)
+                    .HasColumnType("integer")
+                    .HasColumnName("CURRENCYID");
+
+                entity.Property(e => e.Favoriteacct)
+                    .IsRequired()
+                    .HasColumnName("FAVORITEACCT");
+
+                entity.Property(e => e.Heldat).HasColumnName("HELDAT");
+
+                entity.Property(e => e.Initialbal)
+                    .HasColumnType("numeric")
+                    .HasColumnName("INITIALBAL");
+
+                entity.Property(e => e.Interestrate)
+                    .HasColumnType("numeric")
+                    .HasColumnName("INTERESTRATE");
+
+                entity.Property(e => e.Minimumbalance)
+                    .HasColumnType("numeric")
+                    .HasColumnName("MINIMUMBALANCE");
+
+                entity.Property(e => e.Minimumpayment)
+                    .HasColumnType("numeric")
+                    .HasColumnName("MINIMUMPAYMENT");
+
+                entity.Property(e => e.Notes).HasColumnName("NOTES");
+
+                entity.Property(e => e.Paymentduedate)
+                    .HasColumnType("text")
+                    .HasColumnName("PAYMENTDUEDATE");
+
+                entity.Property(e => e.Statementdate).HasColumnName("STATEMENTDATE");
+
+                entity.Property(e => e.Statementlocked)
+                    .HasColumnType("integer")
+                    .HasColumnName("STATEMENTLOCKED");
+
+                entity.Property(e => e.Status)
+                    .IsRequired()
+                    .HasColumnName("STATUS");
+
+                entity.Property(e => e.Website).HasColumnName("WEBSITE");
+            });
+
             modelBuilder.Entity<BudgettableV1>(entity =>
             {
                 entity.HasKey(e => e.Budgetentryid);

@@ -6,6 +6,7 @@ namespace BudgetExtractor
     {
         public string DatabasePath { get; set; }
         public string ExportFolder { get; set; }
+        public string IgnoreCategories { get; set; }
 
 
     }
